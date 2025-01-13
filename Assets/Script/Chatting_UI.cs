@@ -13,6 +13,7 @@ public class Chatting_UI : NetworkBehaviour
     [SerializeField] private Button _sendButton;
 
     internal static Dictionary<NetworkConnectionToClient, string> _connectionUserNameDictionary = new Dictionary<NetworkConnectionToClient, string>();
+    internal static string _localPlayerName;
 
     public override void OnStartServer()
     {
@@ -61,6 +62,15 @@ public class Chatting_UI : NetworkBehaviour
 
     [ClientRpc]
     private void OnResiveRPCMessage(string senderName, string message)
+    {
+        string formatedMessage = (senderName == _localPlayerName) ?
+            $"<color = red>{senderName}:</color>{message}" :
+            $"<color = blue>{senderName}:</color>{message}";
+
+        AppendMessage(formatedMessage);
+    }
+
+    private void AppendMessage(string message)
     {
 
     }
