@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 230640284}
   - component: {fileID: 230640283}
   - component: {fileID: 230640282}
+  - component: {fileID: 230640286}
   m_Layer: 5
   m_Name: LoginPopUp_Canvas
   m_TagString: Untagged
@@ -395,6 +396,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &230640286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230640281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46fc82fbbe642de4882afcb529ed48be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _networkAddress: {fileID: 1287116125}
+  _userName: {fileID: 667713623}
+  _startHostButton: {fileID: 1652790591}
+  _startClientButton: {fileID: 1015136295}
+  _errorText: {fileID: 1991978285}
 --- !u!1 &234060136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2973,6 +2991,7 @@ GameObject:
   - component: {fileID: 1949388861}
   - component: {fileID: 1949388860}
   - component: {fileID: 1949388859}
+  - component: {fileID: 1949388863}
   m_Layer: 5
   m_Name: ChattingUI_Canvas
   m_TagString: Untagged
@@ -3063,6 +3082,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1949388863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949388858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed5aaeb9e556821478798914181f33af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chatHistroy: {fileID: 453899191}
+  _chatScrollbar: {fileID: 1940494898}
+  _chatMessage: {fileID: 892957631}
+  _sendButton: {fileID: 1987826255}
 --- !u!1 &1987826253
 GameObject:
   m_ObjectHideFlags: 0
