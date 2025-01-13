@@ -5,6 +5,14 @@ using Mirror;
 
 public class _NetworkManager : NetworkManager
 {
+    public _NetworkManager Instance { get; private set; }
+    public Chatting_UI Chatting_UI { get; set; }
+
+    public override void Awake()
+    {
+        Instance = this;
+    }
+
     public void OnValueChanged_SetHostName(string hostName)
     {
         this.networkAddress = hostName;
@@ -18,5 +26,7 @@ public class _NetworkManager : NetworkManager
     public override void OnClientDisconnect()
     {
         base.OnClientDisconnect();
+
+        Login_PopUp.Instance.SetUIOnClientDisconnected();
     }
 }

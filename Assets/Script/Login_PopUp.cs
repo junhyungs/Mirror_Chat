@@ -74,4 +74,11 @@ public class Login_PopUp : MonoBehaviour
         _startHostButton.interactable = userNameValue;
         _startClientButton.interactable = userNameValue;
     }
+
+    public void SetUIOnClientDisconnected()
+    {
+        this.gameObject.SetActive(true);
+        _userName.text = string.Empty;
+        _userName.ActivateInputField();
+    }
 }
