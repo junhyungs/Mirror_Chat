@@ -84,4 +84,26 @@ public class Chatting_UI : NetworkBehaviour
                            // -> 비동기로 처리되는 특성 때문에 발생되는 타이밍 문제를 해결하기 위해 프레임 대기를 2번.
         _chatScrollbar.value = 0; //스크롤 맨 아래로 이동.
     }
+
+    public void OnClickExit()
+    {
+        NetworkManager.singleton.StopHost();
+    }
+
+    public void OnValueChanged_ToggleButton(string input)
+    {
+        _sendButton.interactable = !string.IsNullOrWhiteSpace(input);
+    }
+
+    public void OnReturnSendMessage(string input)
+    {
+        bool getKey = Input.GetKeyDown(KeyCode.Return)||
+            Input.GetKeyDown(KeyCode.KeypadEnter)||
+            Input.GetButtonDown("Submit");
+
+        if (getKey)
+        {
+            OnClickSendMessage();
+        }
+    }
 }
