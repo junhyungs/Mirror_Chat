@@ -12,9 +12,11 @@ public class Chatting_UI : NetworkBehaviour
     [SerializeField] private InputField _chatMessage;
     [SerializeField] private Button _sendButton;
 
+    internal static Dictionary<NetworkConnectionToClient, string> _connectionUserNameDictionary = new Dictionary<NetworkConnectionToClient, string>();
+
     public override void OnStartServer()
     {
-        
+        _connectionUserNameDictionary.Clear();
     }
 
     public override void OnStartClient()
