@@ -15,13 +15,11 @@ public class Login_PopUp : MonoBehaviour
 
     [SerializeField] internal Text _errorText;
 
-    public static Login_PopUp Instance { get; private set; }
-
     private string _originNetworkAddress;
 
     private void Awake()
     {
-        Instance = this;
+        _NetworkManager.Instance.Login_PopUp = this;
     }
 
     private void OnEnable()

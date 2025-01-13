@@ -15,6 +15,11 @@ public class Chatting_UI : NetworkBehaviour
     internal static Dictionary<NetworkConnectionToClient, string> _connectionUserNameDictionary = new Dictionary<NetworkConnectionToClient, string>();
     internal static string _localPlayerName;
 
+    private void Awake()
+    {
+        _NetworkManager.Instance.Chatting_UI = this;
+    }
+
     public override void OnStartServer()
     {
         _connectionUserNameDictionary.Clear();
@@ -32,6 +37,14 @@ public class Chatting_UI : NetworkBehaviour
         if (!string.IsNullOrWhiteSpace(chatMessage))
         {
             CommandChatMessage(chatMessage.Trim());
+        }
+    }
+
+    public void RemoveNameOnServerDisconnected(NetworkConnectionToClient clientNetworkInformation)
+    {
+        if (_connectionUserNameDictionary.ContainsKey(clientNetworkInformation))
+        {
+            _connectionUserNameDictionary.Remove(clientNetworkInformation);
         }
     }
 

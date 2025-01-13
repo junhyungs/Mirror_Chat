@@ -5,8 +5,10 @@ using Mirror;
 
 public class _NetworkManager : NetworkManager
 {
-    public _NetworkManager Instance { get; private set; }
+    public Login_PopUp Login_PopUp { get; set; }
     public Chatting_UI Chatting_UI { get; set; }
+
+    public static _NetworkManager Instance { get; private set; }    
 
     public override void Awake()
     {
@@ -20,6 +22,8 @@ public class _NetworkManager : NetworkManager
 
     public override void OnServerDisconnect(NetworkConnectionToClient clientNetworkInformation)
     {
+        Chatting_UI.RemoveNameOnServerDisconnected(clientNetworkInformation);
+
         base.OnServerDisconnect(clientNetworkInformation);
     }
 
@@ -27,6 +31,6 @@ public class _NetworkManager : NetworkManager
     {
         base.OnClientDisconnect();
 
-        Login_PopUp.Instance.SetUIOnClientDisconnected();
+        Login_PopUp.SetUIOnClientDisconnected();
     }
 }
