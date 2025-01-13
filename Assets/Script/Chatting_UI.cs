@@ -50,5 +50,18 @@ public class Chatting_UI : NetworkBehaviour
 
             _connectionUserNameDictionary.Add(sender, userName);
         }
+
+        if(!string.IsNullOrWhiteSpace(message))
+        {
+            var userName = _connectionUserNameDictionary[sender];
+
+            OnResiveRPCMessage(userName, message);
+        }
+    }
+
+    [ClientRpc]
+    private void OnResiveRPCMessage(string senderName, string message)
+    {
+
     }
 }
