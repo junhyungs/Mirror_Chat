@@ -21,6 +21,14 @@ public class Chatting_UI : NetworkBehaviour
 
     public override void OnStartClient()
     {
-        
+        _chatHistroy.text = string.Empty;
+    }
+
+    public void OnClickSendMessage()
+    {
+        if (!string.IsNullOrWhiteSpace(_chatMessage.text))
+        {
+
+        }
     }
 }
