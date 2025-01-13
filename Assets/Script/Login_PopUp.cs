@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
 public class Login_PopUp : MonoBehaviour
 {
@@ -16,8 +17,25 @@ public class Login_PopUp : MonoBehaviour
 
     public static Login_PopUp Instance { get; private set; }
 
+    private string _originNetworkAddress;
+
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        SetDefaultNetworkAddress();
+    }
+
+    private void SetDefaultNetworkAddress()
+    {
+        if (string.IsNullOrWhiteSpace(NetworkManager.singleton.networkAddress))
+        {
+            NetworkManager.singleton.networkAddress = "localHost";
+        }
+
+        _originNetworkAddress = NetworkManager.singleton.networkAddress;
     }
 }
