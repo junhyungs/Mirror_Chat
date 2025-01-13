@@ -64,14 +64,24 @@ public class Chatting_UI : NetworkBehaviour
     private void OnResiveRPCMessage(string senderName, string message)
     {
         string formatedMessage = (senderName == _localPlayerName) ?
-            $"<color = red>{senderName}:</color>{message}" :
-            $"<color = blue>{senderName}:</color>{message}";
+            $"<color=red>{senderName}:</color>{message}" :
+            $"<color=blue>{senderName}:</color>{message}";
 
-        AppendMessage(formatedMessage);
+        AppendMessage(formatedMessage); //AppendMessage 메서드도 빼고 딱 여기까지 서버에서 호출. 어트리뷰트가 사용된 메서드만 특정 처리가 되고 나머지 이어지는 메서드는 전부 로컬에서 실행.
     }
 
     private void AppendMessage(string message)
     {
+        StartCoroutine(AppendAndScroll(message));
+    }
 
+    private IEnumerator AppendAndScroll(string message)
+    {
+        _chatHistroy.text += message + "\n";
+
+        yield return null; // -> UI가 텍스트를 변경하고 업데이트 하는 시간을 보장. 
+        yield return null; // -> 스크롤바의 상태가 완전히 반영되지 않는 경우를 대비. UI는 LateUpdate에서 업데이트 되기 때문에 한 프레임 더 대기하여 완전히 반영되도록 보장한다.
+                           // -> 비동기로 처리되는 특성 때문에 발생되는 타이밍 문제를 해결하기 위해 프레임 대기를 2번.
+        _chatScrollbar.value = 0; //스크롤 맨 아래로 이동.
     }
 }
