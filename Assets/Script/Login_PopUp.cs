@@ -67,7 +67,7 @@ public class Login_PopUp : MonoBehaviour
         }
     }
 
-    private void OnValueChanged_ToggleButton(string userName)
+    public void OnValueChanged_ToggleButton(string userName)
     {
         bool userNameValue = string.IsNullOrWhiteSpace(userName);
 
