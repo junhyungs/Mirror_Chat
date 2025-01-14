@@ -55,7 +55,7 @@ public class Chatting_UI : NetworkBehaviour
         {
             var user = sender.identity.GetComponent<User>();
 
-            var userName = user.UserName;
+            var userName = user._userName;
 
             _connectionUserNameDictionary.Add(sender, userName);
         }
