@@ -17,6 +17,9 @@ public class Login_PopUp : MonoBehaviour
 
     private string _originNetworkAddress;
 
+    [Header("_NetworkManager")]
+    [SerializeField] private _NetworkManager _networkManager;
+
     private void OnEnable()
     {
         _userName.onValueChanged.AddListener(OnValueChanged_ToggleButton);
@@ -85,5 +88,23 @@ public class Login_PopUp : MonoBehaviour
     {
         _errorText.text = message;
         _errorText.gameObject.SetActive(true);
+    }
+
+    public void OnClickStartHost()
+    {
+        if(_networkManager != null)
+        {
+            _networkManager.StartHost();
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    public void OnClickStartClient()
+    {
+        if( _networkManager != null)
+        {
+            _networkManager.StartClient();
+            this.gameObject.SetActive(false);
+        }
     }
 }

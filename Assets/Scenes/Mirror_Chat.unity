@@ -413,6 +413,7 @@ MonoBehaviour:
   _startHostButton: {fileID: 1652790591}
   _startClientButton: {fileID: 1015136295}
   _errorText: {fileID: 1991978285}
+  _networkManager: {fileID: 918190517558228383}
 --- !u!1 &234060136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,10 +1935,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0, g: 1, b: 0.9906864, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.28627452, g: 0.28627452, b: 0.28627452, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1955,7 +1956,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1015136296}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 230640286}
+        m_TargetAssemblyTypeName: Login_PopUp, Assembly-CSharp
+        m_MethodName: OnClickStartClient
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1015136296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2622,10 +2635,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.99215686, b: 1, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2643,7 +2656,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1652790592}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 230640286}
+        m_TargetAssemblyTypeName: Login_PopUp, Assembly-CSharp
+        m_MethodName: OnClickStartHost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1652790592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4011,6 +4036,12 @@ PrefabInstance:
       propertyPath: _login_PopUp
       value: 
       objectReference: {fileID: 230640286}
+    - target: {fileID: 6362952341008767187, guid: 20e153c6a6301ad40934daaacca2eb35,
+        type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 7279795057675074004, guid: 8ef509164cce08343ba373df8c2bbd85,
+        type: 3}
     - target: {fileID: 7708374589551589451, guid: 20e153c6a6301ad40934daaacca2eb35,
         type: 3}
       propertyPath: m_Name
@@ -4031,6 +4062,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54cfeb5060f233e4aa5b280232599383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &918190517558228383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6362952341008767187, guid: 20e153c6a6301ad40934daaacca2eb35,
+    type: 3}
+  m_PrefabInstance: {fileID: 918190517558228381}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b75b2a10db47824bbb7f27afeb1b019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807

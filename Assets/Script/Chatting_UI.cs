@@ -17,11 +17,13 @@ public class Chatting_UI : NetworkBehaviour
 
     public override void OnStartServer()
     {
+        this.gameObject.SetActive(true);
         _connectionUserNameDictionary.Clear();
     }
 
     public override void OnStartClient()
     {
+        this.gameObject.SetActive(true);
         _chatHistroy.text = string.Empty;
     }
 
