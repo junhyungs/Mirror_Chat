@@ -5,6 +5,17 @@ using Mirror;
 
 public class _NetworkAuthenticator : NetworkAuthenticator
 {
+    public struct AuthRequestMessage : NetworkMessage
+    {
+        public string _authUserName;
+    }
+
+    public struct AuthResiveMessage : NetworkMessage
+    {
+        public byte _code;
+        public string _message;
+    }
+
     #region Server
     //UnityEngin이 실행되는 시점에 자동으로 메서드를 호출한다.
     //RunTime에서 최초로 실행되는 메서드.
