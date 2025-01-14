@@ -5,6 +5,15 @@ using Mirror;
 
 public class _NetworkAuthenticator : NetworkAuthenticator
 {
+    private readonly HashSet<NetworkConnection> _activeConnectionsSet = new HashSet<NetworkConnection>();
+    internal static readonly HashSet<string> _userNames = new HashSet<string>();
+
+    //readonly -> 필드가 한 번 초기화 된 이후에는 값이 변경되지 않도록 보장함.
+
+    //NetworkConnection -> 클라와 서버 간의 연결을 추적, 데이터 송수신을 담당. 각 연결은 고유한 NetworkConnection을 가진다. 따라서 이걸 통해 메시지를 보내거나 연결된 클라이언트 식별이 가능.
+    //NetworkConnectionToClient -> 서버 -> 클라이언트와 연결을 관리하는 클래스. NetworkConnection을 상속하며 서버 -> 클라 데이터 수신, 서버 -> 클라 연결관리, 특정 클라관리에 사용된다.
+    //NetworkConnectionToServer -> 클라 -> 서버 연결을 관리하는 클래스. NetworkConnection을 상속하며 클라 -> 서버 데이터 수신, 클라 -> 서버 연결관리에 사용된다.
+
     public struct AuthRequestMessage : NetworkMessage //클라이언트가 서버에 인증을 요청할 때 사용되는 구조체. 
     {
         public string _authUserName; //클라이언트가 서버에 전달하는 유저 이름.
@@ -42,7 +51,19 @@ public class _NetworkAuthenticator : NetworkAuthenticator
 
     public void OnAuthRequestMessage(NetworkConnectionToClient clientNetworkInformation, AuthRequestMessage message)
     {
+        if(_activeConnectionsSet.Contains(clientNetworkInformation)) //중복된 인증 방지. 이미 서버가 클라이언트의 인증 요청을 수행하고 있다면 리턴하여 다시 호출되는 것을 방지한다.
+        {
+            return;
+        }
 
+        if (!_userNames.Contains(message._authUserName))
+        {
+
+        }
+        else
+        {
+
+        }
     }
 
     private IEnumerator DelayedDisconnect(NetworkConnectionToClient clientNetworkInformation, float waitTime)
