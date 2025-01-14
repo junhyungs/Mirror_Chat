@@ -35,13 +35,14 @@ public class _NetworkAuthenticator : NetworkAuthenticator
 
     public override void OnStartServer()
     {
-        //서버가 클라이언트로부터 AuthRequestMessage를 수신할 경우, OnAuthRequestMessage 메서드가 실행되도록 하는 핸들러 등록. false -> 권한설정. 인증이 없어도 메시지 처리가 가능함을 의미.
+        // 서버가 클라이언트로부터 AuthRequestMessage를 수신받았을 때 실행될 메서드(OnAuthRequestMessage)를 등록.
+        // false -> 권한이 없어도 메시지 처리가 가능함을 의미.
         NetworkServer.RegisterHandler<AuthRequestMessage>(OnAuthRequestMessage, false); 
     }
 
     public override void OnStopServer()
     {
-
+        NetworkServer.UnregisterHandler<AuthRequestMessage>();
     }
 
     public override void OnServerAuthenticate(NetworkConnectionToClient clientNetworkInformation)
@@ -118,12 +119,14 @@ public class _NetworkAuthenticator : NetworkAuthenticator
 
     public override void OnStartClient()
     {
-        
+        // 클라이언트가 서버로부터 AuthResiveMessage를 수신받았을 때 실행될 메서드(OnAuthResponsMessage)를 등록.
+        // false -> 권한이 없어도 메시지 처리가 가능함을 의미.
+        NetworkClient.RegisterHandler<AuthResiveMessage>(OnAuthResponsMessage, false);
     }
 
     public override void OnStopClient()
     {
-        
+        NetworkClient.UnregisterHandler<AuthResiveMessage>();
     }
 
     public override void OnClientAuthenticate() //클라이언트에서 인증 요청 시 호출.
