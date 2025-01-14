@@ -17,11 +17,6 @@ public class Login_PopUp : MonoBehaviour
 
     private string _originNetworkAddress;
 
-    private void Awake()
-    {
-        _NetworkManager.Instance.Login_PopUp = this;
-    }
-
     private void OnEnable()
     {
         _userName.onValueChanged.AddListener(OnValueChanged_ToggleButton);

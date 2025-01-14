@@ -15,11 +15,6 @@ public class Chatting_UI : NetworkBehaviour
     internal static Dictionary<NetworkConnectionToClient, string> _connectionUserNameDictionary = new Dictionary<NetworkConnectionToClient, string>();
     internal static string _localPlayerName;
 
-    private void Awake()
-    {
-        _NetworkManager.Instance.Chatting_UI = this;
-    }
-
     public override void OnStartServer()
     {
         _connectionUserNameDictionary.Clear();

@@ -5,15 +5,11 @@ using Mirror;
 
 public class _NetworkManager : NetworkManager
 {
-    public Login_PopUp Login_PopUp { get; set; }
-    public Chatting_UI Chatting_UI { get; set; }
+    [Header("Login_PopUp")]
+    [SerializeField] private Login_PopUp _login_PopUp;
 
-    public static _NetworkManager Instance { get; private set; }    
-
-    public override void Awake()
-    {
-        Instance = this;
-    }
+    [Header("Chatting_UI")]
+    [SerializeField] private Chatting_UI _chatting_UI; 
 
     public void OnValueChanged_SetHostName(string hostName)
     {
@@ -22,7 +18,7 @@ public class _NetworkManager : NetworkManager
 
     public override void OnServerDisconnect(NetworkConnectionToClient clientNetworkInformation)
     {
-        Chatting_UI.RemoveNameOnServerDisconnected(clientNetworkInformation);
+        _chatting_UI.RemoveNameOnServerDisconnected(clientNetworkInformation);
 
         base.OnServerDisconnect(clientNetworkInformation);
     }
@@ -31,6 +27,6 @@ public class _NetworkManager : NetworkManager
     {
         base.OnClientDisconnect();
 
-        Login_PopUp.SetUIOnClientDisconnected();
+        _login_PopUp.SetUIOnClientDisconnected();
     }
 }

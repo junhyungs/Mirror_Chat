@@ -3984,6 +3984,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6362952341008767187, guid: 20e153c6a6301ad40934daaacca2eb35,
+        type: 3}
+      propertyPath: _chatting_UI
+      value: 
+      objectReference: {fileID: 1949388863}
+    - target: {fileID: 6362952341008767187, guid: 20e153c6a6301ad40934daaacca2eb35,
+        type: 3}
+      propertyPath: _login_PopUp
+      value: 
+      objectReference: {fileID: 230640286}
     - target: {fileID: 7708374589551589451, guid: 20e153c6a6301ad40934daaacca2eb35,
         type: 3}
       propertyPath: m_Name
