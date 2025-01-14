@@ -49,7 +49,7 @@ public class Login_PopUp : MonoBehaviour
     {
         if (string.IsNullOrWhiteSpace(NetworkManager.singleton.networkAddress)) //현재 네트워크 주소가 null, 빈 문자열, 공백인지 확인.
         {
-            NetworkManager.singleton.networkAddress = "jun_MirrorChat"; //조건에 해당되면 주소를 "jun_MirrorChat"로 설정.
+            NetworkManager.singleton.networkAddress = "localhost"; //조건에 해당되면 주소를 "localhost"로 설정.
         }
 
         _originNetworkAddress = NetworkManager.singleton.networkAddress; //원본 네트워크 주소 저장.
@@ -112,4 +112,6 @@ public class Login_PopUp : MonoBehaviour
             this.gameObject.SetActive(false);
         }
     }
+
+
 }

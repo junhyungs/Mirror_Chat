@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
@@ -9,7 +7,7 @@ public class _NetworkManager : NetworkManager
     [SerializeField] private Login_PopUp _login_PopUp;
 
     [Header("Chatting_UI")]
-    [SerializeField] private Chatting_UI _chatting_UI; 
+    [SerializeField] private Chatting_UI _chatting_UI;
 
     public void OnValueChanged_SetHostName(string hostName)
     {

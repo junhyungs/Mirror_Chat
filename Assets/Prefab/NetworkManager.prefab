@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5302938812618185266}
   - component: {fileID: 6362952341008767187}
-  - component: {fileID: 718207144404804279}
   - component: {fileID: 5708620378580247044}
   - component: {fileID: 2246954005105162533}
   m_Layer: 0
@@ -57,7 +56,7 @@ MonoBehaviour:
   offlineScene: 
   onlineScene: 
   transport: {fileID: 5708620378580247044}
-  networkAddress: jun_MirrorChat
+  networkAddress: localhost
   maxConnections: 100
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
@@ -84,23 +83,6 @@ MonoBehaviour:
   timeInterpolationGui: 0
   _login_PopUp: {fileID: 0}
   _chatting_UI: {fileID: 0}
---- !u!114 &718207144404804279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7708374589551589451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 2768528179
-  serverOnly: 0
-  visibility: 0
-  hasSpawned: 0
 --- !u!114 &5708620378580247044
 MonoBehaviour:
   m_ObjectHideFlags: 0
