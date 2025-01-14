@@ -80,4 +80,10 @@ public class Login_PopUp : MonoBehaviour
         _errorText.text = string.Empty;
         _errorText.gameObject.SetActive(false);
     }
+
+    public void SetUIOnAuthError(string message)
+    {
+        _errorText.text = message;
+        _errorText.gameObject.SetActive(true);
+    }
 }

@@ -136,7 +136,16 @@ public class _NetworkAuthenticator : NetworkAuthenticator
 
     public void OnAuthResponsMessage(AuthResiveMessage authResiveMessage)
     {
+        if(authResiveMessage._code == 100)
+        {
+            ClientAccept(); //서버로부터 인증 승인 후 자신을 인증처리.
+        }
+        else
+        {
+            NetworkManager.singleton.StopHost(); //서버 호스트 중지.
 
+            _loginPopUp.SetUIOnAuthError(authResiveMessage._message); //에러메시지 출력.
+        }
     }
     #endregion
 }
