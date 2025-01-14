@@ -103,9 +103,17 @@ public class _NetworkAuthenticator : NetworkAuthenticator
     #endregion
 
     #region Client
-    public void SetUserName(string userName)
-    {
 
+    [Header("Login_PopUp")]
+    [SerializeField] private Login_PopUp _loginPopUp;
+
+    [Header("Client_UserName")]
+    public string _clientUserName;
+
+    public void OnInputValueChanged_SetUserName(string userName)
+    {
+        _clientUserName = userName;
+        _loginPopUp.SetUIOnAuthValueChanged();
     }
 
     public override void OnStartClient()

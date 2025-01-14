@@ -74,4 +74,10 @@ public class Login_PopUp : MonoBehaviour
         _userName.text = string.Empty;
         _userName.ActivateInputField();
     }
+
+    public void SetUIOnAuthValueChanged()
+    {
+        _errorText.text = string.Empty;
+        _errorText.gameObject.SetActive(false);
+    }
 }
