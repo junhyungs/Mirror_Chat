@@ -14,12 +14,12 @@ public class _NetworkAuthenticator : NetworkAuthenticator
     //NetworkConnectionToClient -> 서버 -> 클라이언트와 연결을 관리하는 클래스. NetworkConnection을 상속하며 서버 -> 클라 데이터 수신, 서버 -> 클라 연결관리, 특정 클라관리에 사용된다.
     //NetworkConnectionToServer -> 클라 -> 서버 연결을 관리하는 클래스. NetworkConnection을 상속하며 클라 -> 서버 데이터 수신, 클라 -> 서버 연결관리에 사용된다.
 
-    public struct AuthRequestMessage : NetworkMessage //클라이언트가 서버에 인증을 요청할 때 사용되는 구조체. 
+    public struct AuthRequestMessage : NetworkMessage //클라이언트가 서버에 인증을 요청할 때 사용되는 구조체(패킷). 
     {
         public string _authUserName; //클라이언트가 서버에 전달하는 유저 이름.
     }
 
-    public struct AuthResiveMessage : NetworkMessage //서버가 클라이언트에게 인증 결과를 응답할 때 사용되는 구조체.
+    public struct AuthResiveMessage : NetworkMessage //서버가 클라이언트에게 인증 결과를 응답할 때 사용되는 구조체(패킷).
     {
         public byte _code; //인증 결과를 나타내는 변수. (Ex 성공 = 0, 실패 = 1)
         public string _message; //인증 결과 메시지.
@@ -74,7 +74,17 @@ public class _NetworkAuthenticator : NetworkAuthenticator
         }
         else
         {
+            _activeConnectionsSet.Add(clientNetworkInformation); //연결 해제를 기다리는 클라이언트 관리 해쉬셋. 인증이 실패했기 때문에 이곳에 요청을 보낸 클라이언트 추가.
 
+            AuthResiveMessage authResiveMessage = new AuthResiveMessage() //연결 실패 메시지 작성
+            {
+                _code = 200,
+                _message = "User Name already is use! Try again"
+            };
+
+            clientNetworkInformation.Send(authResiveMessage); //실패 메시지 전송.
+
+            clientNetworkInformation.isAuthenticated = false; //isAuthenticated를 false로 설정하여 실패처리.isAuthenticated -> 해당 클라이언트가 인증된 상태인지 여부를 나타내는 bool 값.
         }
     }
 
