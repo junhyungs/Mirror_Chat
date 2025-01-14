@@ -101,4 +101,31 @@ public class _NetworkAuthenticator : NetworkAuthenticator
         _activeConnectionsSet.Remove(clientNetworkInformation); //연결 해제를 대기하는 해쉬셋에서 삭제.
     }
     #endregion
+
+    #region Client
+    public void SetUserName(string userName)
+    {
+
+    }
+
+    public override void OnStartClient()
+    {
+        
+    }
+
+    public override void OnStopClient()
+    {
+        
+    }
+
+    public override void OnClientAuthenticate() //클라이언트에서 인증 요청 시 호출.
+    {
+        
+    }
+
+    public void OnAuthResponsMessage(AuthResiveMessage authResiveMessage)
+    {
+
+    }
+    #endregion
 }
