@@ -25,6 +25,11 @@ public class Chatting_UI : NetworkBehaviour
         _chatHistroy.text = string.Empty;
     }
 
+    public void SetLocalUserName(string userName)
+    {
+        _localPlayerName = userName; //로컬 플레이어 이름 저장.
+    }
+
     public void OnClickSendMessage()
     {
         var chatMessage = _chatMessage.text;

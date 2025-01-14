@@ -19,4 +19,18 @@ public class User : NetworkBehaviour
         //인증 데이터(사용자 이름)를 NetworkConnectionToClient.authenticationData에 저장했음. 그걸 가져와서 SyncVar를 통해 모든 클라에게 현재 유저 이름 동기화.
     }
 
+    public override void OnStartLocalPlayer()
+    {
+        var objChattingUI = GameObject.Find("ChattingUI_Canvas");
+
+        if(objChattingUI != null)
+        {
+            var chattingUIComponent = objChattingUI.GetComponent<Chatting_UI>();
+
+            if(chattingUIComponent != null)
+            {
+                chattingUIComponent.SetLocalUserName(_userName);
+            }
+        }
+    }
 }
