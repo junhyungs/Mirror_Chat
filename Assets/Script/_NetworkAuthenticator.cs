@@ -67,6 +67,10 @@ public class _NetworkAuthenticator : NetworkAuthenticator
                 _code = 100,
                 _message = "Auth Success"
             };
+
+            clientNetworkInformation.Send(authResiveMessage); //NetworkConnectionToClient.Send( ) 메서드를 사용하여 클라이언트에게 인증 성공 메시지 전송.
+
+            ServerAccept(clientNetworkInformation); //클라이언트 인증 성공 처리. 인증이 성공한 클라이언트를 서버가 인증된 사용자로 인정. 이 과정에서 권한이 없던 클라이언트에게 권한이 생김.
         }
         else
         {
