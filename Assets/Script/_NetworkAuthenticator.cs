@@ -85,13 +85,20 @@ public class _NetworkAuthenticator : NetworkAuthenticator
             clientNetworkInformation.Send(authResiveMessage); //실패 메시지 전송.
 
             clientNetworkInformation.isAuthenticated = false; //isAuthenticated를 false로 설정하여 실패처리.isAuthenticated -> 해당 클라이언트가 인증된 상태인지 여부를 나타내는 bool 값.
+
+            StartCoroutine(DelayedDisconnect(clientNetworkInformation, 1.0f));
         }
     }
 
-    private IEnumerator DelayedDisconnect(NetworkConnectionToClient clientNetworkInformation, float waitTime)
+    private IEnumerator DelayedDisconnect(NetworkConnectionToClient clientNetworkInformation, float waitTime) //연결 해제 코루틴
     {
         yield return new WaitForSeconds(waitTime);
+
+        ServerReject(clientNetworkInformation); //서버가 클라이언트의 요청을 거부하거나, 인증 실패 후 해당 클라이언트의 연결을 해제하기 위해 사용.
+
         yield return null;
+
+        _activeConnectionsSet.Remove(clientNetworkInformation); //연결 해제를 대기하는 해쉬셋에서 삭제.
     }
     #endregion
 }
