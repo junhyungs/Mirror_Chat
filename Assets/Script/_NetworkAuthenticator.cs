@@ -56,9 +56,17 @@ public class _NetworkAuthenticator : NetworkAuthenticator
             return;
         }
 
-        if (!_userNames.Contains(message._authUserName))
+        if (!_userNames.Contains(message._authUserName)) //접속 유저 이름을 관리하는 해쉬셋에 요청자 이름이 없으면
         {
+            _userNames.Add(message._authUserName); //해쉬셋에 유저 등록.
 
+            clientNetworkInformation.authenticationData = message._authUserName; //authenticationData(인증자 데이터)에 유저 이름을 저장하여 이후 인증 상태를 추적할 수 있도록함.
+
+            AuthResiveMessage authResiveMessage = new AuthResiveMessage() //인증 성공 구조체를 만들어서 클라이언트에게 인증 성공 메시지를 보낼 준비.
+            {
+                _code = 100,
+                _message = "Auth Success"
+            };
         }
         else
         {
