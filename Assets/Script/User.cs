@@ -12,5 +12,11 @@ public class User : NetworkBehaviour
     //Hook -> [SyncVar(hook = nameof(OnUserNameChanged))] SyncVar 값이 변경되면 nameof안에 있는 메서드를 자동으로 호출함.
     //UI 반영 같은 값 변경 이후 추가처리 같은 부분에 사용.
 
+    public override void OnStartServer() //서버가 시작될 때.
+    {
+        _userName = (string)connectionToClient.authenticationData;
+        //아까 _NetworkAuthenticator에서 클라이언트가 서버로 인증 요청을 보내고 OnAuthRequestMessage 메서드가 실행될 때
+        //인증 데이터(사용자 이름)를 NetworkConnectionToClient.authenticationData에 저장했음. 그걸 가져와서 SyncVar를 통해 모든 클라에게 현재 유저 이름 동기화.
+    }
 
 }
