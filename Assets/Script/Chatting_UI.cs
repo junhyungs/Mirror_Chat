@@ -58,7 +58,7 @@ public class Chatting_UI : NetworkBehaviour
         //sender 매개변수는 호출자의 네트워크 연결 정보를 포함한다. 즉, 메시지를 보낸 클라이언트를 추적하거나, 해당 클라이언트의 이름을 찾아 메시지를 표시할 수 있다.
         //현재 null로 설정했지만 실제로 미러가 이 정보를 자동으로 채운다. 채팅을 친 클라이언트의 네트워크 정보를 미러가 자동으로 sender 매개변수에 담아서 서버로 전송한다.
 
-        if(_connectionUserNameDictionary.ContainsKey(sender))
+        if(!_connectionUserNameDictionary.ContainsKey(sender))
         {
             var user = sender.identity.GetComponent<User>();
 

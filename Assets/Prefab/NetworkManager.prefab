@@ -56,13 +56,14 @@ MonoBehaviour:
   autoConnectClientBuild: 0
   offlineScene: 
   onlineScene: 
-  transport: {fileID: 0}
+  transport: {fileID: 5708620378580247044}
   networkAddress: jun_MirrorChat
   maxConnections: 100
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 2246954005105162533}
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 7279795057675074004, guid: 8ef509164cce08343ba373df8c2bbd85,
+    type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []

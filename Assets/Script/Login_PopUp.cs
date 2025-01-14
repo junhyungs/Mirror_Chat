@@ -20,6 +20,11 @@ public class Login_PopUp : MonoBehaviour
     [Header("_NetworkManager")]
     [SerializeField] private _NetworkManager _networkManager;
 
+    private void Awake()
+    {
+        _errorText.gameObject.SetActive(false);
+    }
+
     private void OnEnable()
     {
         _userName.onValueChanged.AddListener(OnValueChanged_ToggleButton);
@@ -44,7 +49,7 @@ public class Login_PopUp : MonoBehaviour
     {
         if (string.IsNullOrWhiteSpace(NetworkManager.singleton.networkAddress)) //현재 네트워크 주소가 null, 빈 문자열, 공백인지 확인.
         {
-            NetworkManager.singleton.networkAddress = "localhost"; //조건에 해당되면 주소를 "localHost"로 설정.
+            NetworkManager.singleton.networkAddress = "jun_MirrorChat"; //조건에 해당되면 주소를 "jun_MirrorChat"로 설정.
         }
 
         _originNetworkAddress = NetworkManager.singleton.networkAddress; //원본 네트워크 주소 저장.
@@ -65,7 +70,7 @@ public class Login_PopUp : MonoBehaviour
 
     public void OnValueChanged_ToggleButton(string userName)
     {
-        bool userNameValue = string.IsNullOrWhiteSpace(userName);
+        bool userNameValue = !string.IsNullOrWhiteSpace(userName);
 
         _startHostButton.interactable = userNameValue;
         _startClientButton.interactable = userNameValue;
