@@ -131,7 +131,7 @@ public class _NetworkAuthenticator : NetworkAuthenticator
 
     public override void OnClientAuthenticate() //클라이언트에서 인증 요청 시 호출.
     {
-        
+        NetworkClient.Send(new AuthRequestMessage { _authUserName = _clientUserName });
     }
 
     public void OnAuthResponsMessage(AuthResiveMessage authResiveMessage)
